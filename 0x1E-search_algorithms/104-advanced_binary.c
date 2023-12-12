@@ -1,22 +1,33 @@
 #include "search_algos.h"
 
 /**
- * advanced_binary - searches for a value in a sorted array of integers,
- * using the Binary search algorithm.
- * @array: pointer to the first element of the array to search in.
- * @size: number of elements in array.
- * @value: value to search for.
- * Return: first index where value is located,
- * or -1 if value is not present or array is NULL.
- **/
+ * advanced_binary - Search for value in sorted array
+ * @array: Pointer to first element of array
+ * @size: Elements in array
+ * @value: Value being searched for
+ *
+ * Return: Index where value found
+ * -1 if value not found or NULL array
+ */
 int advanced_binary(int *array, size_t size, int value)
 {
-	if (!array)
-		return (-1);
+	size_t i;
 
-	/* It's not what you expected, I still have to do this task */
-	size = size;
-	value = value;
-
-	return (-1);
+	printf("Searching in array: ");
+	for (i = 0; i < size; ++i)
+	{
+		printf("%d", array[i]);
+		if (i < size - 1)
+			printf(", ");
+	}
+	printf("\n");
+	if (size == 1)
+		return (*array == value ? *array : -1);
+	if (array[size / 2] < value)
+		return (advanced_binary(array + (size / 2) + 1, size / 2, value));
+	if (array[size / 2] == value)
+		return (array[size / 2]);
+	return (advanced_binary(array, size / 2, value));
 }
+/* size is n */
+/* value is x */
